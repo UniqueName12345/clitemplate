@@ -11,7 +11,6 @@ from itertools import chain
 
 """Minifies JS and copies files to build/ directory""" 
 
-YUI = "tools/yuicompressor-2.4.2.jar"
 MINIFY_RE = re.compile(r'<!--\s*MINIFY:\s*-->((?:<script.+</script>|\s)+)<!--\s*TO:\s*(.+)-->')
 SCRIPT_RE = re.compile(r'<script type="text/javascript" src="([^"]+)"></script>')
 
@@ -48,12 +47,10 @@ def build(src_dir, build_dir):
         mini_path = join(build_dir, mini_name)
         if isfile(mini_path):
             remove(mini_path)
-        mini_file = open(mini_path, "a")
         for mini_script in mini_scripts:
             if isfile(mini_script):
                 print "  + %s" % mini_script
-                subprocess.call(["java", "-jar", YUI, mini_script],
-                                stdout=mini_file)
+                subprocess.call(["cp", mini_script, mini_path])
         print "--> %s" % mini_path
         
     print "Copying data files..."
