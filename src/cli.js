@@ -85,6 +85,7 @@ var TerminalShell = {
 		} catch (e) {
 			terminal.print($('<p>').addClass('error').text('An internal error occured: '+e));
 			terminal.setWorking(false);
+      throw e;
 		}
 	}
 };
