@@ -658,8 +658,9 @@ function nextComic(terminal) {
     const comicNumber = allowed[comicIndex - 1]
     xkcd.now.comic = comicNumber;
     xkcdDisplay(terminal, comicNumber, (data) => {
+      const safeTitle = data.title.replace(/[^\x00-\x7F]/g, "_");
       xkcd.now.keyObj.comic = data.num;
-      xkcd.now.keyObj.title = data.title;
+      xkcd.now.keyObj.title = safeTitle;
       xkcd.askTier(terminal)
     });
   }
