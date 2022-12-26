@@ -54,19 +54,31 @@ const needInteger = (value, label) => {
 class Ranker {
 
   static bw = "better (+) or worse (-)"
-  static allTiers = [..."sabcd"]
+  static allTiers = [..."sabcdf"]
   static allTopics = [
-    "Tech",
-    "Coding",
+    "Anthropology",
+    "Astronomy",
+    "Avionics",
+    "Biology",
+    "Climate",
+    "Chemistry",
+    "Computers",
+    "Design",
+    "Economics",
+    "Geogrphy",
+    "Geology",
+    "History",
     "Language",
-    "Science",
-    "Premise",
-    "Chart",
-    "Math",
-    "News",
-    "Media",
-    "Story",
-    "Gimmick",
+    "Literature",
+    "Materials",
+    "Medicine",
+    "Movies",
+    "Music",
+    "Philosophy",
+    "Physics",
+    "Politics",
+    "Technology",
+    "Television",
   ]
 
   static isRankable(keyObj, itemObj) {
@@ -384,6 +396,10 @@ function toClear() {
   }
 }
 
+const toMargin = (x) => {
+  return 2**Math.max(0, Math.log2(x) - 4)
+}
+
 var xkcd = {
   latest: null,
   last: null,
@@ -478,9 +494,10 @@ var xkcd = {
   askSort: (terminal) => {
     const { tier } = xkcd.now.itemObj
     const tierList = xkcd.rankings.toTierList(tier)
+    const margin = toMargin(tierList.length)
     const { low, mid, high } = xkcd.now.sort
 
-    if ( low < high ) {
+    if ( high - low > margin ) {
       const { bw } = Ranker
       const newDatum = tierList[mid]
       const { title } = xkcd.now.keyObj
