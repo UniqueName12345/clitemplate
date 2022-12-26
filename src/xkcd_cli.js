@@ -57,9 +57,12 @@ class Ranker {
   static allTiers = [..."sabcdf"]
   static allTopics = [
     "Anthropology",
+    "Algebra",
+    "Arithmetic",
     "Astronomy",
     "Avionics",
     "Biology",
+    "Calculus",
     "Climate",
     "Chemistry",
     "Computers",
@@ -67,6 +70,7 @@ class Ranker {
     "Economics",
     "Geogrphy",
     "Geology",
+    "Geometry",
     "History",
     "Language",
     "Literature",
@@ -77,6 +81,7 @@ class Ranker {
     "Philosophy",
     "Physics",
     "Politics",
+    "Statistics",
     "Technology",
     "Television",
   ]
