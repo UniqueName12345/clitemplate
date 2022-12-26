@@ -68,6 +68,7 @@ class Ranker {
     "Computers",
     "Design",
     "Economics",
+    "Generic",
     "Geogrphy",
     "Geology",
     "Geometry",
