@@ -402,8 +402,9 @@ function toClear() {
   }
 }
 
-const toMargin = (x) => {
-  return 2**Math.max(0, Math.log2(x) - 4)
+const toMargin = (x, steps) => {
+  const gap = Math.log2(x) - steps + 1
+  return Math.ceil(2**Math.max(0, gap))
 }
 
 var xkcd = {
@@ -500,7 +501,7 @@ var xkcd = {
   askSort: (terminal) => {
     const { tier } = xkcd.now.itemObj
     const tierList = xkcd.rankings.toTierList(tier)
-    const margin = toMargin(tierList.length)
+    const margin = toMargin(tierList.length, 3)
     const { low, mid, high } = xkcd.now.sort
 
     if ( high - low > margin ) {
