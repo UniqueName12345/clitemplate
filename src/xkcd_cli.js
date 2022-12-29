@@ -403,8 +403,7 @@ function toClear() {
 }
 
 const toMargin = (x, steps) => {
-  const gap = Math.log2(x) - steps + 1
-  return Math.ceil(2**Math.max(0, gap))
+  return Math.ceil(x * 2 ** (1 - steps))
 }
 
 var xkcd = {
